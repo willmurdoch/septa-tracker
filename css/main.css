@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,500,900&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+body {
+  position: absolute;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  min-height: 500px;
+  overflow-y: scroll;
+}
+
+#background {
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url(../assets/background.jpg) center no-repeat;
+  background-size: cover;
+  z-index: 1;
+}
+
+#background:before, #background:after {
+  content: '';
+  position: absolute;
+  display: block;
+  z-index: 1;
+  width: 105%;
+  height: 105%;
+  top: -2.5%;
+  left: -2.5%;
+}
+
+#background:before {
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+#background:after {
+  background: inherit;
+  filter: blur(5px);
+}
+
+#back {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background: #f15b30;
+  color: #FFF;
+  z-index: 5;
+  font-size: 50px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  padding: 0 0 0.2em;
+  line-height: 0.85em;
+  border-radius: 100%;
+  cursor: pointer;
+  display: none;
+}
+
+#back.in {
+  display: block;
+}
+
+#back:hover {
+  background: #FFF;
+  color: #f15b30;
+}
+
+form {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  transition: top 0.5s ease-out;
+}
+
+form.out {
+  top: -100%;
+}
+
+form img {
+  display: block;
+  width: 125px;
+  height: auto;
+  margin: 0 auto 2rem;
+}
+
+form select {
+  background-image: url(../assets/angle-arrow-down.svg);
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1rem) center;
+  background-size: 1rem;
+}
+
+form select, form input {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  padding: 1rem;
+  font-weight: 100;
+  appearance: none;
+  -webkit-appearance: none;
+  font-size: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #FFF;
+  outline: 0;
+}
+
+form select:nth-child(2), form input:nth-child(2) {
+  margin-left: 1rem;
+}
+
+form input[type="submit"] {
+  display: table;
+  width: auto;
+  margin: 1rem auto 0;
+  padding: 1em 3em;
+  border-radius: 5px;
+  text-transform: uppercase;
+  background: #0155a0;
+  border: 0;
+  cursor: pointer;
+  box-shadow: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.1s ease-out;
+}
+
+form input[type="submit"]:hover {
+  background: #0162b9;
+}
+
+.formPart {
+  display: flex;
+  flex-flow: row;
+  position: relative;
+  margin-bottom: 1rem;
+  align-items: center;
+  transition: all 0.2s ease-out;
+}
+
+.formPart.inactive {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+.transitArrow {
+  margin: 0 0.5rem;
+  color: #FFF;
+}
+
+#scheduleList {
+  max-width: 700px;
+  margin: 2rem auto;
+}
+
+.scheduleWrap {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 0;
+  overflow: hidden;
+  top: 100%;
+  transition: top 0.5s ease-out;
+}
+
+.scheduleWrap.in {
+  top: 0;
+  height: auto;
+}
+
+table {
+  width: calc(100% - 2rem);
+  border: 1px solid #0155a0;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  overflow: hidden;
+  text-align: center;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+table th, table td {
+  padding: 5px;
+  font-weight: 500;
+}
+
+table .trainNo, table .delay {
+  width: 5rem;
+}
+
+table .arrow {
+  width: 2rem;
+  color: #0155a0;
+  font-weight: 100;
+}
+
+table th, table td:first-of-type {
+  background: rgba(1, 85, 160, 0.95);
+  color: #FFF;
+}
+
+table tr:nth-child(even) td:not(:first-of-type) {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+table tr:nth-child(even) td:first-of-type {
+  background: #014887;
+}
+
+table td {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+table tr:last-of-type td {
+  border-bottom: 0;
+}
