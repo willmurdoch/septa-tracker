@@ -28,6 +28,9 @@ if(isset($_GET['line'])){
     $trainList = $trips->{$line}->trains;
     $timeTable = [];
     foreach($trainList as $train){
+      // echo '<pre>';
+      // print_r($train);
+      // echo '</pre>';
       if($train->train_day == $day && isset($train->stops[$origin]) && isset($train->stops[$destination])){
         $myStops = $train->stops;
         if(strtotime($train->stops[$origin]) < strtotime($train->stops[$destination])){

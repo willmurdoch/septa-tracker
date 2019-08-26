@@ -105,6 +105,11 @@ form select {
   background-repeat: no-repeat;
   background-position: calc(100% - 1rem) center;
   background-size: 1rem;
+  border-radius: 5px;
+}
+
+form select option {
+  color: #000;
 }
 
 form select, form input {

@@ -20,9 +20,10 @@ $trains = file('api/rail/trips.txt', FILE_IGNORE_NEW_LINES);
 for($i = 1; $i < count($trains); $i++){
   $trainData = explode(',', $trains[$i]);
   $myLine = $trainData[0];
-  $trips->{$myLine}->trains->{$trainData[2]} = (object)[];
-  $trips->{$myLine}->trains->{$trainData[2]}->train_number = explode('_', $trainData[2])[1];
-  $trips->{$myLine}->trains->{$trainData[2]}->train_day = $trainData[1];
+  $myTrain = explode('_', $trainData[2], 2)[1];
+  $trips->{$myLine}->trains->{$myTrain} = (object)[];
+  $trips->{$myLine}->trains->{$myTrain}->train_number = explode('_', $trainData[2])[1];
+  $trips->{$myLine}->trains->{$myTrain}->train_day = $trainData[1];
 }
 
 //Get all stops
@@ -38,8 +39,9 @@ $stopTimes = file('api/rail/stop_times.txt', FILE_IGNORE_NEW_LINES);
 for($i = 1; $i < count($stopTimes); $i++){
   $stopTimeData = explode(',', $stopTimes[$i]);
   $myLine = explode('_', $stopTimeData[0])[0];
+  $myTrain = explode('_', $stopTimeData[0], 2)[1];
   $tripID = $stopTimeData[3];
-  $trips->{$myLine}->trains->{$stopTimeData[0]}->stops[$tripID] = $stopTimeData[2];
+  $trips->{$myLine}->trains->{$myTrain}->stops[$tripID] = $stopTimeData[2];
   $trips->{$myLine}->stops->$tripID = $stopStorage[$tripID];
 }
 

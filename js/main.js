@@ -65,6 +65,9 @@ $(document).delegate('#back', 'click', function(e){
   $(this).removeClass('in');
   $('form').removeClass('out');
   window.history.pushState('', '', '?');
+  $('body, html').animate({
+    scrollTop: 0
+  }, 500);
   $('.scheduleWrap').animate({
     top: '200%'
   }, 500, function(){

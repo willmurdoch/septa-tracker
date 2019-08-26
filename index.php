@@ -24,7 +24,7 @@
     }
     ?>
   </div>
-  <form<?php if($_GET['destination']) echo ' class="out"'; ?> action="schedule.php" method="POST">
+  <form<?php if(isset($_GET['destination'])) echo ' class="out"'; ?> action="schedule.php" method="POST">
     <img src="assets/logo.png" alt="SEPTA">
     <div class="formPart inactive" id="lineSelect">
       <select name="line" id="line" required>
