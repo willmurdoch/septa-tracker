@@ -2,16 +2,18 @@
 
 //Structure data in a way that is actually useful
 $trips = (object)[];
+$trips->trains = (object)[];
+$trips->stops = (object)[];
+$trips->lines = (object)[];
 
 //Get all routes
 $routes = file('api/rail/routes.txt', FILE_IGNORE_NEW_LINES);
+$lines = [];
 foreach($routes as $route){
   $routeData = explode(',', $route);
   if($routeData[0] != 'route_id'){
-    $trips->{$routeData[0]} = (object)[];
-    $trips->{$routeData[0]}->trains = (object)[];
-    $trips->{$routeData[0]}->stops = (object)[];
-    $trips->{$routeData[0]}->name = $routeData[1];
+    $trips->lines->{$routeData[0]} = $routeData[1];
+    $lines[$routeData[0]] = $routeData[1];
   }
 }
 
@@ -21,9 +23,11 @@ for($i = 1; $i < count($trains); $i++){
   $trainData = explode(',', $trains[$i]);
   $myLine = $trainData[0];
   $myTrain = explode('_', $trainData[2], 2)[1];
-  $trips->{$myLine}->trains->{$myTrain} = (object)[];
-  $trips->{$myLine}->trains->{$myTrain}->train_number = explode('_', $trainData[2])[1];
-  $trips->{$myLine}->trains->{$myTrain}->train_day = $trainData[1];
+  if(!isset($trips->trains->{$myTrain})) $trips->trains->{$myTrain} = (object)[];
+  if(!isset($trips->trains->{$myTrain}->line)) $trips->trains->{$myTrain}->line = $myLine.' ';
+  else $trips->trains->{$myTrain}->line .= $myLine.' ';
+  $trips->trains->{$myTrain}->train_number = explode('_', $trainData[2])[1];
+  $trips->trains->{$myTrain}->train_day = $trainData[1];
 }
 
 //Get all stops
@@ -41,8 +45,17 @@ for($i = 1; $i < count($stopTimes); $i++){
   $myLine = explode('_', $stopTimeData[0])[0];
   $myTrain = explode('_', $stopTimeData[0], 2)[1];
   $tripID = $stopTimeData[3];
-  $trips->{$myLine}->trains->{$myTrain}->stops[$tripID] = $stopTimeData[2];
-  $trips->{$myLine}->stops->$tripID = $stopStorage[$tripID];
+  $trips->trains->{$myTrain}->stops[$tripID] = $stopTimeData[2];
+  if(!isset($trips->stops->$tripID)){
+    $trips->stops->$tripID = (object)[];
+    $trips->stops->{$tripID}->name = $stopStorage[$tripID];
+  }
+  if(!isset($trips->stops->{$tripID}->line)){
+    $trips->stops->{$tripID}->line = $myLine.' ';
+  }
+  elseif(strpos($trips->stops->{$tripID}->line, $myLine) === false){
+    $trips->stops->{$tripID}->line .= $myLine.' ';
+  }
 }
 
 // echo '<pre>';

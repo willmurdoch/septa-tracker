@@ -9,16 +9,18 @@
 <body>
   <div id="back"<?php if(isset($_GET['line'])) echo ' class="in"'; ?>>&lsaquo;</div>
   <div id="stations" style="display: none;">
-    <?php foreach($trips as $line){
-      echo '<select data-line="'.$line->name.'">';
+    <?php
+    $routes = array();
+    foreach($trips->stops as $key => $stops){
+      echo '<select data-line="'.$key.'">';
       echo '<option value="" selected>Select a station</option>';
       $myStops = Array();
-      foreach($line->stops as $key => $value){
+      foreach($trips->stops as $key => $value){
         $myStops[$key] = $value;
       }
       asort($myStops);
-      foreach($myStops as $key => $value){
-        echo '<option value="'.$key.'">'.$value.'</option>';
+      foreach($myStops as $key => $station){
+        echo '<option value="'.$key.'">'.$station->name.'</option>';
       }
       echo '</select>';
     }
@@ -30,8 +32,8 @@
       <select name="line" id="line" required>
         <option value="" <?php if(!isset($_GET['line'])) echo 'selected'; ?>>Select a train line</option>
         <?php
-        foreach($trips as $key => $trip){
-          echo '<option '.(isset($_GET['line']) && $_GET['line'] == $key ? 'selected' : '').' value="'.$key.'">'.$trip->name.'</option>';
+        foreach($lines as $key => $value){
+          echo '<option '.(isset($_GET['line']) && $_GET['line'] == $key ? 'selected' : '').' value="'.$key.'">'.$value.'</option>';
         }
         ?>
       </select>
@@ -57,6 +59,7 @@
       <input type="submit" value="Submit">
     </div>
   </form>
+
 
   <div class="scheduleWrap<?php if(isset($_GET['destination'])) echo ' in'; ?>">
     <?php include 'schedule.php'; ?>
