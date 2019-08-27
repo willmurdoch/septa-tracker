@@ -16,21 +16,18 @@ if(isset($_GET['line'])){
     <!--Table header-->
     <tr>
       <th class="trainNo">Train</th>
-      <th class="station"><?php echo $trips->{$line}->stops->{$origin}; ?></th>
+      <th class="station"><?php echo $trips->stops->{$origin}->name; ?></th>
       <th class="arrow"></th>
-      <th class="station"><?php echo $trips->{$line}->stops->{$destination}; ?></th>
+      <th class="station"><?php echo $trips->stops->{$destination}->name; ?></th>
       <th class="current">Stop</th>
       <th class="delay"></th>
     </tr>
 
     <?php
     //Reorder trains by arrival time
-    $trainList = $trips->{$line}->trains;
+    $trainList = $trips->trains;
     $timeTable = [];
     foreach($trainList as $train){
-      // echo '<pre>';
-      // print_r($train);
-      // echo '</pre>';
       if($train->train_day == $day && isset($train->stops[$origin]) && isset($train->stops[$destination])){
         $myStops = $train->stops;
         if(strtotime($train->stops[$origin]) < strtotime($train->stops[$destination])){

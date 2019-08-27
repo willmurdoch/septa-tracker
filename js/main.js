@@ -21,7 +21,7 @@ function toggleInputs(){
 
 //Get station list based on line dropdown
 function checkLine(){
-  let myOption = $('#line option:selected').text();
+  let myOption = $('#line option:selected').val();
   let stationList = $('#stations').find('[data-line="' + myOption + '"]').html();
   $('#origin, #destination').html(stationList);
 }

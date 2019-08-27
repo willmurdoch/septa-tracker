@@ -11,12 +11,12 @@
   <div id="stations" style="display: none;">
     <?php
     $routes = array();
-    foreach($trips->stops as $key => $stops){
-      echo '<select data-line="'.$key.'">';
+    foreach($trips->lines as $id => $line){
+      echo '<select data-line="'.$id.'">';
       echo '<option value="" selected>Select a station</option>';
       $myStops = Array();
-      foreach($trips->stops as $key => $value){
-        $myStops[$key] = $value;
+      foreach($trips->stops as $key => $stop){
+        if(strpos($stop->line, $id) !== false) $myStops[$key] = $stop;
       }
       asort($myStops);
       foreach($myStops as $key => $station){
