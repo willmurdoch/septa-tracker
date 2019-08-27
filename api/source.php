@@ -12,8 +12,8 @@ $lines = [];
 foreach($routes as $route){
   $routeData = explode(',', $route);
   if($routeData[0] != 'route_id'){
-    $trips->lines->{$routeData[0]} = $routeData[1];
-    $lines[$routeData[0]] = $routeData[1];
+    $trips->lines->{$routeData[0]} = explode(' Line', $routeData[1])[0];
+    $lines[$routeData[0]] = explode(' Line', $routeData[1])[0];
   }
 }
 

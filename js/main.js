@@ -25,13 +25,53 @@ function checkLine(){
   let stationList = $('#stations').find('[data-line="' + myOption + '"]').html();
   $('#origin, #destination').html(stationList);
 }
+function checkFeed(){
+  if($('.scheduleWrap').hasClass('in')){
+    $.ajax({
+      url: 'api/trainview.php',
+      type: 'GET',
+      success: function(response){
+        var liveFeed = JSON.parse(response);
+        for(var i = 0; i < liveFeed.length; i++){
+          let myTrain = liveFeed[i]['trainno'];
+          if($('.scheduleWrap.in tr[data-train="'+myTrain+'"]').length){
+            if($('select[data-line="'+$('#scheduleList').attr('data-line')+'"] option:contains("'+liveFeed[i]['nextstop']+'")').length){
+              $('.scheduleWrap.in tr[data-train="'+myTrain+'"]').addClass('running');
+              $('.scheduleWrap.in tr[data-train="'+myTrain+'"] .current').text(liveFeed[i]['nextstop']);
+              if(liveFeed[i]['late'] == 0){
+                $('.scheduleWrap.in tr[data-train="'+myTrain+'"] .delay').text('On time');
+              }
+              else if(liveFeed[i]['late'] == 1){
+                $('.scheduleWrap.in tr[data-train="'+myTrain+'"] .delay').text(liveFeed[i]['late']+' min');
+              }
+              else{
+                if(liveFeed[i]['late'] >= 3 && liveFeed[i]['late'] < 10){
+                  $('.scheduleWrap.in tr[data-train="'+myTrain+'"]').addClass('slow');
+                }
+                else if(liveFeed[i]['late'] >= 10){
+                  $('.scheduleWrap.in tr[data-train="'+myTrain+'"]').addClass('late');
+                }
+                $('.scheduleWrap.in tr[data-train="'+myTrain+'"] .delay').text(liveFeed[i]['late']+' mins');
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+}
 
 //Initialize
 $(document).ready(function(){
+  checkFeed();
   let inputCheck = setInterval(function(){
     toggleInputs();
   }, 100);
   checkLine();
+
+  let feedCheck = setInterval(function(){
+    checkFeed();
+  }, 5000);
 })
 
 //Line dropdown change binding
@@ -55,6 +95,7 @@ $(document).delegate('form input[type="submit"]', 'click', function(e){
         $('.scheduleWrap').html(response).addClass('in');
         $('form').addClass('out');
         $('#back').addClass('in');
+        checkFeed();
       }
     });
   }

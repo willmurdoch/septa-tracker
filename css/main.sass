@@ -185,7 +185,17 @@ table
   tr:nth-child(even)
     td:first-of-type
       background: darken($septaBlue, 5)
+  tr.running
+    td:first-of-type
+      background: #0095ff
+      border-bottom: 1px solid rgba(0,0,0,0.25)
+  tr.slow td:first-of-type
+    background: #f3e648
+  tr.late td:first-of-type
+    background: $septaRed
   td
     background: rgba(255,255,255,0.95)
   tr:last-of-type td
     border-bottom: 0
+  tr.slow td
+    background: yellow

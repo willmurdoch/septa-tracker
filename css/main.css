@@ -233,10 +233,27 @@ table tr:nth-child(even) td:first-of-type {
   background: #014887;
 }
 
+table tr.running td:first-of-type {
+  background: #0095ff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+table tr.slow td:first-of-type {
+  background: #f3e648;
+}
+
+table tr.late td:first-of-type {
+  background: #f15b30;
+}
+
 table td {
   background: rgba(255, 255, 255, 0.95);
 }
 
 table tr:last-of-type td {
   border-bottom: 0;
+}
+
+table tr.slow td {
+  background: yellow;
 }

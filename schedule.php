@@ -12,7 +12,7 @@ if(isset($_GET['line'])){
 
   ?>
 
-  <table id="scheduleList">
+  <table id="scheduleList" data-line="<?php echo $line; ?>">
     <!--Table header-->
     <tr>
       <th class="trainNo">Train</th>
@@ -20,7 +20,7 @@ if(isset($_GET['line'])){
       <th class="arrow"></th>
       <th class="station"><?php echo $trips->stops->{$destination}->name; ?></th>
       <th class="current">Stop</th>
-      <th class="delay"></th>
+      <th class="delay">Delay</th>
     </tr>
 
     <?php
@@ -42,7 +42,7 @@ if(isset($_GET['line'])){
     foreach($timeTable as $train){
       $startTime = date('g:i A', strtotime($train->stops[$origin]));
       $endTime = date('g:i A', strtotime($train->stops[$destination]));
-      echo '<tr>';
+      echo '<tr data-train="'.$train->train_number.'">';
         echo '<td class="trainNo">'.$train->train_number.'</td>';
         echo '<td class="station">'.$startTime.'</td>';
         echo '<td class="arrow">&rarr;</td>';
