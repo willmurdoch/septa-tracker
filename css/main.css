@@ -256,3 +256,63 @@ table td {
 table tr:last-of-type td {
   border-bottom: 0;
 }
+
+.trainBlockWrap {
+  width: calc(100% - 2rem);
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.trainWrap {
+  background: #FFF;
+  margin: 0.5rem auto;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.trainWrap .trainHeader {
+  padding: 0.5rem;
+  box-sizing: border-box;
+  background: #0155a0;
+  color: #FFF;
+}
+
+.trainWrap .trainHeader p {
+  margin: 0;
+}
+
+.trainWrap .trainDets {
+  font-size: 0;
+  padding: 0.5rem;
+}
+
+.trainWrap .trainStop, .trainWrap .trainArrow {
+  font-size: 1.5rem;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  width: 33%;
+}
+
+.trainWrap .trainStop span, .trainWrap .trainArrow span {
+  display: block;
+}
+
+.trainWrap .trainStop span:first-of-type, .trainWrap .trainArrow span:first-of-type {
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
+
+.trainWrap .start {
+  text-align: left;
+}
+
+.trainWrap .trainArrow {
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.trainWrap .end {
+  text-align: right;
+}
