@@ -27,7 +27,7 @@ if(isset($_GET['line'])){
   }
   ksort($timeTable);
 
-  echo '<div class="trainBlockWrap">';
+  echo '<div class="trainBlockWrap" data-line="'.$line.'">';
   foreach($timeTable as $train){
     $startTime = date('g:i A', strtotime($train->stops[$origin]));
     $endTime = date('g:i A', strtotime($train->stops[$destination]));
@@ -35,6 +35,7 @@ if(isset($_GET['line'])){
       //Train title bar
       echo '<div class="trainHeader">';
         echo '<p class="number">'.$train->train_number.'</p>';
+        echo '<p class="current"></p>';
         echo '<p class="delay"></p>';
       echo '</div>';
 

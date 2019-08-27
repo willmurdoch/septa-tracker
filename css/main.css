@@ -100,6 +100,12 @@ form img {
   margin: 0 auto 2rem;
 }
 
+@media (max-width: 850px) {
+  form img {
+    width: 75px;
+  }
+}
+
 form select {
   background-image: url(../assets/angle-arrow-down.svg);
   background-repeat: no-repeat;
@@ -161,6 +167,12 @@ form input[type="submit"]:hover {
   transition: all 0.2s ease-out;
 }
 
+@media (max-width: 850px) {
+  .formPart {
+    display: block;
+  }
+}
+
 .formPart.inactive {
   pointer-events: none;
   opacity: 0;
@@ -170,6 +182,14 @@ form input[type="submit"]:hover {
 .transitArrow {
   margin: 0 0.5rem;
   color: #FFF;
+}
+
+@media (max-width: 850px) {
+  .transitArrow {
+    font-size: 0;
+    display: block;
+    margin: 0.5rem 0;
+  }
 }
 
 #scheduleList {
@@ -279,7 +299,24 @@ table tr:last-of-type td {
 }
 
 .trainWrap .trainHeader p {
+  display: inline-block;
   margin: 0;
+}
+
+.trainWrap .trainHeader .delay {
+  float: right;
+}
+
+.trainWrap .trainHeader .current {
+  font-size: 0.75rem;
+}
+
+.trainWrap.running .trainHeader {
+  background: #0095ff;
+}
+
+.trainWrap.running.slow .trainHeader {
+  background: #f3e648;
 }
 
 .trainWrap .trainDets {

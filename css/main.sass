@@ -5,6 +5,8 @@
 $septaRed: #f15b30
 $septaBlue: #0155a0
 
+$mobile: 850px
+
 //Global
 *
   box-sizing: border-box
@@ -84,6 +86,8 @@ form
     width: 125px
     height: auto
     margin: 0 auto 2rem
+    @media (max-width: $mobile)
+      width: 75px
   select
     background-image: url(../assets/angle-arrow-down.svg)
     background-repeat: no-repeat
@@ -132,6 +136,8 @@ form
   margin-bottom: 1rem
   align-items: center
   transition: all 0.2s ease-out
+  @media (max-width: $mobile)
+    display: block
   &.inactive
     pointer-events: none
     opacity: 0
@@ -139,6 +145,10 @@ form
 .transitArrow
   margin: 0 0.5rem
   color: #FFF
+  @media (max-width: $mobile)
+    font-size: 0
+    display: block
+    margin: 0.5rem 0
 
 //Schedules
 #scheduleList
@@ -218,7 +228,16 @@ table
     background: $septaBlue
     color: #FFF
     p
+      display: inline-block
       margin: 0
+    .delay
+      float: right
+    .current
+      font-size: 0.75rem
+  &.running .trainHeader
+    background: #0095ff
+  &.running.slow .trainHeader
+    background: #f3e648
   .trainDets
     font-size: 0
     padding: 0.5rem

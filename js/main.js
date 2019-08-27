@@ -34,24 +34,24 @@ function checkFeed(){
         var liveFeed = JSON.parse(response);
         for(var i = 0; i < liveFeed.length; i++){
           let myTrain = liveFeed[i]['trainno'];
-          if($('.scheduleWrap.in tr[data-train="'+myTrain+'"]').length){
-            if($('select[data-line="'+$('#scheduleList').attr('data-line')+'"] option:contains("'+liveFeed[i]['nextstop']+'")').length){
-              $('.scheduleWrap.in tr[data-train="'+myTrain+'"]').addClass('running');
-              $('.scheduleWrap.in tr[data-train="'+myTrain+'"] .current').text(liveFeed[i]['nextstop']);
+          if($('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"]').length){
+            if($('select[data-line="'+$('.trainBlockWrap').attr('data-line')+'"] option:contains("'+liveFeed[i]['nextstop']+'")').length){
+              $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"]').addClass('running');
+              $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"] .current').html('&nbsp;at '+liveFeed[i]['nextstop']);
               if(liveFeed[i]['late'] == 0){
-                $('.scheduleWrap.in tr[data-train="'+myTrain+'"] .delay').text('On time');
+                $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"] .delay').text('On time');
               }
               else if(liveFeed[i]['late'] == 1){
-                $('.scheduleWrap.in tr[data-train="'+myTrain+'"] .delay').text(liveFeed[i]['late']+' min');
+                $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"] .delay').text(liveFeed[i]['late']+' min');
               }
               else{
                 if(liveFeed[i]['late'] >= 3 && liveFeed[i]['late'] < 10){
-                  $('.scheduleWrap.in tr[data-train="'+myTrain+'"]').addClass('slow');
+                  $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"]').addClass('slow');
                 }
                 else if(liveFeed[i]['late'] >= 10){
-                  $('.scheduleWrap.in tr[data-train="'+myTrain+'"]').addClass('late');
+                  $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"]').addClass('late');
                 }
-                $('.scheduleWrap.in tr[data-train="'+myTrain+'"] .delay').text(liveFeed[i]['late']+' mins');
+                $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"] .delay').text(liveFeed[i]['late']+' mins');
               }
             }
           }
