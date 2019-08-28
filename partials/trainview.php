@@ -15,7 +15,7 @@ foreach($liveTrains as $train){
   if($train->line == $trips->lines->{$line}){
     foreach($timeTable as $scheduled){
       if($scheduled->train_number == $train->trainno){
-        $startTime = date('g:i A', strtotime($scheduled->stops[$origin]));
+        $startTime = date('g:i A', strtotime($scheduled->stops[$origin].' + '.$train->late.' minute'));
         $endTime = date('g:i A', strtotime($scheduled->stops[$destination].' + '.$train->late.' minute'));
         if($train->late < 1) $classList = '';
         elseif($train->late <= 6) $classList = 'delayed';

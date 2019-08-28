@@ -62,10 +62,18 @@ $(document).ready(function(){
   }, 5000);
 })
 
+//Reverse train direction
+$(document).delegate('.reverse', 'click', function(e){
+  e.preventDefault();
+  let flippedQuery = 'line=' + getUrlVars()['line'] + '&days=' + getUrlVars()['days'] + '&origin=' + getUrlVars()['destination'] + '&destination=' + getUrlVars()['origin']
+  window.history.pushState('', '', '?' + flippedQuery);
+  location.reload();
+});
 //Line dropdown change binding
 $(document).delegate('#line', 'change', function(e){
   checkLine();
 });
+
 //Form submission action
 $(document).delegate('form input[type="submit"]', 'click', function(e){
   e.preventDefault();

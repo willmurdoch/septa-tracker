@@ -4,10 +4,13 @@ include_once dirname(__FILE__).'/../api/rail.php';
 //Make sure all required params exist
 if(isset($_GET['line'])):
 
-  //Get live train feed
-  include 'trainview.php';
-
   ?>
+  <header>
+    <p><span><?php echo $trips->stops->{$origin}->name; ?></span> to <span><?php echo $trips->stops->{$destination}->name; ?></span></p>
+    <a href="#" class="reverse">&#8633;</a>
+  </header>
+
+  <?php include 'trainview.php'; ?>
   <table id="scheduleList" data-line="<?php echo $line; ?>">
     <!--Table header-->
     <tr>

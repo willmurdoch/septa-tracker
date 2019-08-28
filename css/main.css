@@ -72,6 +72,35 @@ body {
   display: block;
 }
 
+header {
+  margin: 2rem auto 2rem;
+  text-align: center;
+}
+
+header p, header .reverse {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+header p {
+  font-size: 1.25rem;
+  font-weight: 100;
+  margin: 0;
+  display: inline-block;
+}
+
+header p span {
+  font-weight: 900;
+}
+
+header .reverse {
+  font-size: 1rem;
+  font-weight: 900;
+  margin-left: 0.5rem;
+  color: #0155a0;
+  text-decoration: none;
+}
+
 form {
   width: 90%;
   max-width: 500px;
