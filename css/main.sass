@@ -89,7 +89,7 @@ form
   select
     background-image: url(../assets/angle-arrow-down.svg)
     background-repeat: no-repeat
-    background-position: calc(100% - 1rem) center
+    background-position: calc(100% - 0.5rem) center
     background-size: 1rem
     border-radius: 5px
     option
@@ -97,9 +97,8 @@ form
   select, input
     width: 100%
     flex-direction: column
-    opacity: 0.9
     display: flex
-    padding: 1rem
+    padding: 0.5rem
     font-weight: 100
     appearance: none
     -webkit-appearance: none
@@ -230,7 +229,7 @@ table
     .current
       font-size: 0.75rem
   &.late .trainHeader
-    background: #0095ff
+    background: $septaRed
   &.delayed .trainHeader
     background: #f3e648
   .trainDets

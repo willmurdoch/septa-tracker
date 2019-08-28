@@ -37,22 +37,16 @@ function checkLine(){
 
 //Keep train view updated
 function checkFeed(){
-  // if($('.scheduleWrap').hasClass('in')){
-  //   $('.trainBlockWrap').html('');
-  //   $.ajax({
-  //     url: 'schedule.php?line=' + getUrlVars()['line'] + '&day=' + getUrlVars()['day'] + '&origin=' + getUrlVars()['origin'] + '&destination=' + getUrlVars()['destination'],
-  //     type: 'GET',
-  //     success: function(response){
-  //       let liveFeed = $(response);
-  //       let liveHTML = liveFeed.find('.trainBlockWrap');
-  //       console.log(liveHTML);
-  //       for(i = 0; i < liveFeed.length; i++){
-  //         console.log(liveHTML[i]);
-  //         $('trainBlockWrap').append(liveHTML[i]);
-  //       }
-  //     }
-  //   });
-  // }
+  if($('.scheduleWrap').hasClass('in')){
+    $.ajax({
+      url: 'partials/trainview.php?line=' + getUrlVars()['line'] + '&days=' + getUrlVars()['days'] + '&origin=' + getUrlVars()['origin'] + '&destination=' + getUrlVars()['destination'],
+      type: 'GET',
+      success: function(response){
+        let myData = $(response)[0];
+        $('.trainBlockWrap').replaceWith(myData);
+      }
+    });
+  }
 }
 
 //Initialize

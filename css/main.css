@@ -105,7 +105,7 @@ form img {
 form select {
   background-image: url(../assets/angle-arrow-down.svg);
   background-repeat: no-repeat;
-  background-position: calc(100% - 1rem) center;
+  background-position: calc(100% - 0.5rem) center;
   background-size: 1rem;
   border-radius: 5px;
 }
@@ -117,9 +117,8 @@ form select option {
 form select, form input {
   width: 100%;
   flex-direction: column;
-  opacity: 0.9;
   display: flex;
-  padding: 1rem;
+  padding: 0.5rem;
   font-weight: 100;
   appearance: none;
   -webkit-appearance: none;
@@ -305,7 +304,7 @@ table tr:last-of-type td {
 }
 
 .trainWrap.late .trainHeader {
-  background: #0095ff;
+  background: #f15b30;
 }
 
 .trainWrap.delayed .trainHeader {
