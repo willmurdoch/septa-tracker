@@ -37,7 +37,7 @@ function checkFeed(){
           if($('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"]').length){
             if($('select[data-line="'+$('.trainBlockWrap').attr('data-line')+'"] option:contains("'+liveFeed[i]['nextstop']+'")').length){
               $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"]').addClass('running');
-              $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"] .current').html('&nbsp;at '+liveFeed[i]['nextstop']);
+              $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"] .current').html('&nbsp;'+liveFeed[i]['nextstop'] + ' next');
               if(liveFeed[i]['late'] == 0){
                 $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"] .delay').text('On time');
               }

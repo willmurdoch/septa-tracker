@@ -15,6 +15,7 @@ body {
   width: 100%;
   min-height: 500px;
   overflow-y: scroll;
+  border-top: 4px solid #f15b30;
 }
 
 #background {
@@ -71,11 +72,6 @@ body {
   display: block;
 }
 
-#back:hover {
-  background: #FFF;
-  color: #f15b30;
-}
-
 form {
   width: 90%;
   max-width: 500px;
@@ -119,18 +115,18 @@ form select option {
 }
 
 form select, form input {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   width: 100%;
   flex-direction: column;
+  opacity: 0.9;
   display: flex;
   padding: 1rem;
   font-weight: 100;
   appearance: none;
   -webkit-appearance: none;
   font-size: 1rem;
-  border: 2px solid rgba(255, 255, 255, 0.75);
+  border: 1px solid #0155a0;
   background-color: rgba(255, 255, 255, 0.05);
-  color: #FFF;
+  color: #0155a0;
   outline: 0;
 }
 
@@ -146,6 +142,7 @@ form input[type="submit"] {
   border-radius: 5px;
   text-transform: uppercase;
   background: #0155a0;
+  color: #FFF;
   border: 0;
   cursor: pointer;
   box-shadow: none;
@@ -181,7 +178,7 @@ form input[type="submit"]:hover {
 
 .transitArrow {
   margin: 0 0.5rem;
-  color: #FFF;
+  color: #0155a0;
 }
 
 @media (max-width: 850px) {
@@ -280,19 +277,18 @@ table tr:last-of-type td {
 .trainBlockWrap {
   width: calc(100% - 2rem);
   max-width: 500px;
-  margin: 2rem auto;
+  margin: 2rem auto 6rem;
 }
 
 .trainWrap {
   background: #FFF;
-  margin: 0.5rem auto;
+  margin: 0.25rem auto;
   width: 100%;
   overflow: hidden;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .trainWrap .trainHeader {
-  padding: 0.5rem;
+  padding: 0.25rem;
   box-sizing: border-box;
   background: #0155a0;
   color: #FFF;
@@ -321,7 +317,7 @@ table tr:last-of-type td {
 
 .trainWrap .trainDets {
   font-size: 0;
-  padding: 0.5rem;
+  padding: 0.25rem;
 }
 
 .trainWrap .trainStop, .trainWrap .trainArrow {

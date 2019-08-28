@@ -1,4 +1,4 @@
-<?php include 'api/source.php'; ?>
+<?php include 'api/rail.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,8 +64,6 @@
   <div class="scheduleWrap<?php if(isset($_GET['destination'])) echo ' in'; ?>">
     <?php include 'schedule.php'; ?>
   </div>
-
-  <div id="background"></div>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/main.js"></script>

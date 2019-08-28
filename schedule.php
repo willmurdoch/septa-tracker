@@ -1,5 +1,5 @@
 <?php
-include 'api/source.php';
+include 'api/rail.php';
 
 //Get variables to generate schedule
 if(isset($_GET['line'])){
