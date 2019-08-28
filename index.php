@@ -1,4 +1,4 @@
-<?php include 'api/rail.php'; ?>
+<?php include_once 'api/rail.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +26,7 @@
     }
     ?>
   </div>
-  <form<?php if(isset($_GET['destination'])) echo ' class="out"'; ?> action="schedule.php" method="POST">
+  <form<?php if(isset($_GET['destination'])) echo ' class="out"'; ?> action="partials/schedule.php" method="POST">
     <img src="assets/logo.png" alt="SEPTA">
     <div class="formPart inactive" id="lineSelect">
       <select name="line" id="line" required>
@@ -60,9 +60,8 @@
     </div>
   </form>
 
-
   <div class="scheduleWrap<?php if(isset($_GET['destination'])) echo ' in'; ?>">
-    <?php include 'schedule.php'; ?>
+    <?php include 'partials/schedule.php'; ?>
   </div>
 
   <script src="js/jquery.min.js"></script>

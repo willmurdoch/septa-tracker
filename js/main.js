@@ -1,3 +1,12 @@
+//Check URL for query
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+    vars[key] = value;
+  });
+  return vars;
+}
+
 //Toggle active inputs for more intuitive user experience
 function toggleInputs(){
   if(!$('form').hasClass('out')){
@@ -25,40 +34,25 @@ function checkLine(){
   let stationList = $('#stations').find('[data-line="' + myOption + '"]').html();
   $('#origin, #destination').html(stationList);
 }
+
+//Keep train view updated
 function checkFeed(){
-  if($('.scheduleWrap').hasClass('in')){
-    $.ajax({
-      url: 'api/trainview.php',
-      type: 'GET',
-      success: function(response){
-        var liveFeed = JSON.parse(response);
-        for(var i = 0; i < liveFeed.length; i++){
-          let myTrain = liveFeed[i]['trainno'];
-          if($('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"]').length){
-            if($('select[data-line="'+$('.trainBlockWrap').attr('data-line')+'"] option:contains("'+liveFeed[i]['nextstop']+'")').length){
-              $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"]').addClass('running');
-              $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"] .current').html('&nbsp;'+liveFeed[i]['nextstop'] + ' next');
-              if(liveFeed[i]['late'] == 0){
-                $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"] .delay').text('On time');
-              }
-              else if(liveFeed[i]['late'] == 1){
-                $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"] .delay').text(liveFeed[i]['late']+' min');
-              }
-              else{
-                if(liveFeed[i]['late'] >= 3 && liveFeed[i]['late'] < 10){
-                  $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"]').addClass('slow');
-                }
-                else if(liveFeed[i]['late'] >= 10){
-                  $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"]').addClass('late');
-                }
-                $('.scheduleWrap.in .trainWrap[data-train="'+myTrain+'"] .delay').text(liveFeed[i]['late']+' mins');
-              }
-            }
-          }
-        }
-      }
-    });
-  }
+  // if($('.scheduleWrap').hasClass('in')){
+  //   $('.trainBlockWrap').html('');
+  //   $.ajax({
+  //     url: 'schedule.php?line=' + getUrlVars()['line'] + '&day=' + getUrlVars()['day'] + '&origin=' + getUrlVars()['origin'] + '&destination=' + getUrlVars()['destination'],
+  //     type: 'GET',
+  //     success: function(response){
+  //       let liveFeed = $(response);
+  //       let liveHTML = liveFeed.find('.trainBlockWrap');
+  //       console.log(liveHTML);
+  //       for(i = 0; i < liveFeed.length; i++){
+  //         console.log(liveHTML[i]);
+  //         $('trainBlockWrap').append(liveHTML[i]);
+  //       }
+  //     }
+  //   });
+  // }
 }
 
 //Initialize

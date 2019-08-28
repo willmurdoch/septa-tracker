@@ -151,10 +151,12 @@ form
 
 //Schedules
 #scheduleList
-  max-width: 700px
-  margin: 2rem auto
+  width: 100%
+  margin: 0 auto 6rem
 .scheduleWrap
   position: absolute
+  width: 95%
+  max-width: 800px
   z-index: 3
   left: 0
   right: 0
@@ -168,11 +170,8 @@ form
     height: auto
 
 table
-  width: calc(100% - 2rem)
-  min-width: 500px
-  border: 1px solid $septaBlue
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.5)
-  border-radius: 5px
+  width: 100%
+  border: 0
   overflow: hidden
   text-align: center
   border-spacing: 0
@@ -191,7 +190,7 @@ table
     color: #FFF
   tr:nth-child(even)
     td:not(:first-of-type)
-      background: rgba(255,255,255,0.85)
+      background: rgba(0,0,0,0.05)
   tr:nth-child(even)
     td:first-of-type
       background: darken($septaBlue, 5)
@@ -204,16 +203,14 @@ table
   tr.late td:first-of-type
     background: $septaRed
   td
-    background: rgba(255,255,255,0.95)
     overflow: hidden
     white-space: nowrap
   tr:last-of-type td
     border-bottom: 0
 
 .trainBlockWrap
-  width: calc(100% - 2rem)
-  max-width: 500px
-  margin: 2rem auto 6rem
+  width: 100%
+  margin: 2rem auto
 
 .trainWrap
   background: #FFF
@@ -232,9 +229,9 @@ table
       float: right
     .current
       font-size: 0.75rem
-  &.running .trainHeader
+  &.late .trainHeader
     background: #0095ff
-  &.running.slow .trainHeader
+  &.delayed .trainHeader
     background: #f3e648
   .trainDets
     font-size: 0
