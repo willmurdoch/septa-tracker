@@ -6,8 +6,8 @@ if(isset($_GET['line'])):
 
   ?>
   <header>
+    <a href="#" class="reverse">&#8633;</a><br>
     <p><span><?php echo $trips->stops->{$origin}->name; ?></span> to <span><?php echo $trips->stops->{$destination}->name; ?></span></p>
-    <a href="#" class="reverse">&#8633;</a>
   </header>
 
   <?php include 'trainview.php'; ?>
